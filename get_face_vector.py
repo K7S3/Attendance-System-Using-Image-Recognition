@@ -3,7 +3,7 @@ import torch
 import numpy as np
 import cv2
 
-def get_face_bb(detection_thresh):
+def get_face_vector(detection_thresh):
     ''' Uses facenet to detect face and then an inception net to calculate the embedding of the detected face'''
     device = 'cpu'
     mtcnn = MTCNN(
@@ -13,15 +13,14 @@ def get_face_bb(detection_thresh):
     )
     resnet = InceptionResnetV1(pretrained='vggface2').eval().to(device)
     video_capture = cv2.VideoCapture(0)
+    print('camera started')
     while True:
         ret, frame = video_capture.read()
-        print('camera started')
         x_aligned, prob = mtcnn(frame, return_prob=True)
         if x_aligned is not None:
             print('Face detected with probability: {:8f}'.format(prob))
             if prob > detection_thresh:
                 break
             
-    face_embedding = resnet(torch.stack([x_aligned]))
-
+    face_embedding = resnet(torch.stack([x_aligned])).detach().numpy()[0]
     return face_embedding
