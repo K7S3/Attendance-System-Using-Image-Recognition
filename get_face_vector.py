@@ -4,7 +4,10 @@ import numpy as np
 import cv2
 
 def get_face_vector(detection_thresh):
-    ''' Uses facenet to detect face and then an inception net to calculate the embedding of the detected face'''
+    
+    ''' Uses facenet to detect faces
+        inception net to get the embedding of the detected face'''
+    
     device = 'cpu'
     mtcnn = MTCNN(
         image_size=160, margin=0, min_face_size=20,
