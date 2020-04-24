@@ -4,7 +4,7 @@ import numpy
 import pickle
 
 class Server:
-    
+    '''Main server class for handling and managing records'''
     def __init__(self, ip, port):
         self.ip = ip
         self.port = port
@@ -13,9 +13,11 @@ class Server:
         self.sock.listen(1)
 
     def accept_connection(self):
+        '''Accept the connection from a requesting client'''
         return self.sock.accept()
 
     def send_msg(self, csock, msg):
+        '''Send text msg to a client'''
         try:
             csock.send(msg.encode())
             return "Message Sent"
@@ -23,6 +25,7 @@ class Server:
             return "Error occurred in sending message"
 
     def recv_msg(self, csock):
+        '''Receives text msg from a client'''
         try:
             return csock.recv(1024).decode()
         except:
@@ -30,7 +33,7 @@ class Server:
 
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     server = Server("127.0.0.1", 8000)
     while True:
         csock, caddr = server.accept_connection()

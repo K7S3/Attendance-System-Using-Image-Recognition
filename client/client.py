@@ -22,11 +22,12 @@ class Client():
             return "Error occurred in receiving message"
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     client = Client("127.0.0.1", 8000)
     out = client.send_msg("Request to connect")
     msg = client.recv_msg()
     print(msg)    
+
 # data= numpy.ones((1, 60))
 
 # serialized_data = pickle.dumps(data, protocol=2)
