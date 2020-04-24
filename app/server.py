@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_socketio import SocketIO, send, emit, join_room, leave_room, close_room
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
@@ -7,8 +7,8 @@ import random
 import datetime
 
 # for socketio
-import eventlet
-eventlet.monkey_patch()
+# import eventlet
+# eventlet.monkey_patch()
 
 
 app = Flask(__name__)
@@ -16,7 +16,8 @@ app.config['SECRET_KEY'] = 'secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] =  "sqlite:///../database/main.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-socketio = SocketIO(app, async_mode='eventlet')
+# socketio = SocketIO(app, async_mode='eventlet')
+socketio = SocketIO(app )
 
 #recieve feature vector
 #check if it exist in DB using L2 norm
@@ -92,5 +93,22 @@ def handleFeatureVector(query_vector, lecture):
     
     # print(datetime.datetime.now(),'Message: ' + msg)
     # send(msg, broadcast=True)
+
+@app.route("/")
+def home():
+    return render_template("home.html")
+
+@app.route("/login")
+def cas():
+    # call cas
+    return render_template("logged_in.html")
+    pass
+
+@app.route("/attendance/<int:user_id>")
+def profile(user_id):
+    # show attendance
+    pass
+
+
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, host="localhost", port="8000")
