@@ -48,14 +48,28 @@ if __name__ == '__main__':
     msg = client.recv_msg()
     print("server -> " + msg)
     while True:
-        inp = input("Ready? Y or N : ")
-        out = client.send_msg(inp)
-        if inp == "Y":
+        inp = input("What would you like to do? \n" + "Type E for enrollment, A for attendance X for exit: ")
+        
+        if inp == "A":
+            out = client.send_msg(inp)
             face_vec = get_face_vector(.95)
             out = client.send_vector(face_vec)
             msg = client.recv_msg()
             print("server -> " + msg)
-        else:
+        
+        elif inp == "E":
+            out = client.send_msg(inp)
+            roll_no = input("Enter Roll Number :")
+            out = client.send_msg(roll_no)
+            face_vec = get_face_vector(0.95)
+            out = client.send_vector(face_vec)
+            msg = client.recv_msg()
+            print("server -> " + msg)
+
+        elif inp == "X":
+            out = client.send_msg(inp)
             print("Finished")
             out = client.close_connection()
             break
+        else:
+            print("Choose out of the given options\n")
