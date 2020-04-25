@@ -6,18 +6,26 @@ import json
 import random
 import datetime
 
+from recognize_face import recognize_face
+import socket
+import numpy
+import pickle
+import select
+import _thread
+
 # for socketio
-# import eventlet
-# eventlet.monkey_patch()
+import eventlet
+eventlet.monkey_patch()
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] =  "sqlite:///../database/main.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['static_url_path'] = '/assets'
 db = SQLAlchemy(app)
-# socketio = SocketIO(app, async_mode='eventlet')
-socketio = SocketIO(app )
+socketio = SocketIO(app, async_mode='eventlet')
+# socketio = SocketIO(app )
 
 #recieve feature vector
 #check if it exist in DB using L2 norm
@@ -77,11 +85,10 @@ def createLecture(lecture_list):
 
 
 @socketio.on('join lecture')
-def handleFeatureVector(query_vector, lecture):
-    user = User.query.filter(func.min(l2_distance(User.feature_vector, query_vector)))
-    print(user.name + "Present")
-    join_room(lecture.id)
-    send(user.name + ' has entered the room.', room=lecture.id)
+def handleFeatureVector(query):    
+    start_procedure(query['face_vec'])
+    # join_room(lecture.id)
+    # send(user.name + ' has entered the room.', room=lecture.id)
     
 
 @socketio.on('leave lecture')
@@ -104,10 +111,25 @@ def cas():
     return render_template("logged_in.html")
     pass
 
-@app.route("/attendance/<int:user_id>")
-def profile(user_id):
-    # show attendance
-    pass
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
+# @app.route("/mark_attendance/<int: lecture_id")
+# def mark_attendance():
+    
+
+def start_procedure(face_vec):
+    '''Function for starting the procedure to mark attendance'''
+    while True:
+        if isinstance(face_vec, str):
+            send('message', face_vec)
+        else: 
+            roll_number = recognize_face(face_vec, 100)
+            if roll_number is not None:
+                send('message', roll_number + " marked present")
+            else:
+                send('message', "Face not recognized")
+    return None
 
 
 if __name__ == '__main__':
