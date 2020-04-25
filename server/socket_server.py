@@ -8,8 +8,16 @@ import _thread
 
 
 class Server:
-    '''Main server class for handling and managing records'''
+    '''
+    Main server class for managing the server and attendance records
+    '''
+    
     def __init__(self, ip, port):
+        ''' 
+        creates a server using a ip address and a port
+        :param ip:  {str} the ip on which the server will be hosted
+        :param port: {int} the port which the server will be using
+        '''
         self.ip = ip
         self.port = port
         self.sock = socket.socket()
@@ -17,11 +25,21 @@ class Server:
         self.sock.listen(1)
 
     def accept_connection(self):
-        '''Accept the connection from a requesting client'''
+        '''
+        Accept the connection from a requesting client
+        :return: Client Socket and Client address
+        '''
+        
         return self.sock.accept()
 
     def send_msg(self, csock, msg):
-        '''Send text msg to a client'''
+        '''
+        Send text msg to a client
+        :param csock: {socket} Client socket to which the message has to be sent
+        :param msg: {str} the message that has to be sent
+        :return: {str} confirmation/error message
+        '''
+        
         try:
             csock.send(msg.encode())
             return "Message Sent"
@@ -29,14 +47,24 @@ class Server:
             return "Error occurred in sending message"
 
     def recv_msg(self, csock):
-        '''Receives text msg from a client'''
+        '''
+        Receives text msg from a client
+        :param csock: {socket} Client socket from which the message has to be received
+        :return: {str} The recieved message or an error message
+        '''
+        
         try:
             return csock.recv(1024).decode()
         except:
             return "Error occurred in receiving message"
 
     def recv_vector(self, csock):
-        '''Receives face vector from the client'''
+        '''
+        Receives a vector from the client
+        :param csock: {socket} Client socket from which the vector has to be received
+        :return: {np.ndarray / str} The recieved vector or an error message
+        '''
+        
         try:
             block = csock.recv(1024)
             data = b'' + block
@@ -49,7 +77,13 @@ class Server:
             return "Error occurred in receiving the vector"
 
     def close_connection(self, csock, caddr):
-        '''Close connection with the client'''
+        '''
+        Close connection with the client
+        :param csock: {socket} Client socket to be closed
+        :param msg: {str} Client address
+        :return: {str} confirmation/error message
+        '''
+        
         try:
             csock.close()
             return "Connection Closed with " + str(caddr)
@@ -58,7 +92,13 @@ class Server:
 
 
 def start_procedure(server, csock, caddr):
-    '''Function for starting the procedure to mark attendance'''
+    '''
+    Function for starting the procedure to mark attendance, each procedure ran on a new thread
+    :param csock: {socket} Client socket to be closed
+    :param msg: {str} Client address
+    :return: {none} when the control exits    
+    '''
+
     msg = server.recv_msg(csock)
     print(str(caddr) + " -> "+ msg)
     out = server.send_msg(csock, "Connection complete")

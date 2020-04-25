@@ -4,13 +4,27 @@ import numpy
 import pickle
 
 class Client():
-    '''Client class for individual cameras'''
+    '''
+    Client class for individual cameras
+    '''
+    
     def __init__(self, server_ip, server_port):
+        ''' 
+        creates a client, and connects it to the server ip address port
+        :param ip:  {str} the ip on which the server is hosted
+        :param port: {int} the port which the server is using
+        '''
+
         self.sock = socket.socket()
         self.sock.connect((server_ip, server_port))
     
     def send_msg(self, msg):
-        '''Sends a text msg to the server'''
+        '''
+        Sends a text msg to the server
+        :param msg: {str} the message that has to be sent
+        :return: {str} confirmation/error message
+        '''
+
         try:
             self.sock.send(msg.encode())
             return "Message Sent"
@@ -18,14 +32,23 @@ class Client():
             return "Error occurred in sending message"
 
     def recv_msg(self):
-        '''receives a text msg from the server'''
+        '''
+        receives a text msg from the server
+        :return: {str} The recieved message or an error message
+        '''
+        
         try:
             return self.sock.recv(1024).decode()
         except:
             return "Error occurred in receiving message"
 
     def send_vector(self, data):
-        '''sends a vector to the server'''
+        '''
+        sends a vector to the server
+        :param: {np.ndarray} The vector to be sent
+        :return: {str} confirmation/error message
+        '''
+        
         try: 
             serialized_data = pickle.dumps(data, protocol=2)
             self.sock.sendall(serialized_data)
@@ -34,7 +57,11 @@ class Client():
             return "Error occurred in sending the vector"
     
     def close_connection(self):
-        '''ends the connection with the server'''
+        '''
+        ends the connection with the server
+        :return: {str} confirmation/error messaage
+        '''
+        
         try:
             self.sock.close()
             return "Connection Closed"

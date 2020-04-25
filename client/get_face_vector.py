@@ -4,9 +4,11 @@ import numpy as np
 import cv2
 
 def get_face_vector(detection_thresh):
-    
-    ''' Uses facenet to detect faces
-        inception net to get the embedding of the detected face'''
+    ''' 
+    Uses facenet to detect faces a pretrained inception net to get the embedding of the detected face
+    :param detection_thresh: {float} The probability threshold with which we want to detect the face
+    :return: {np.ndarray} The detected face vector
+    '''
     
     device = 'cpu'
     mtcnn = MTCNN(

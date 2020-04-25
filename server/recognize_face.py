@@ -3,10 +3,12 @@ import cv2
 import os
 
 def recognize_face(face_vector, recognition_thresh):
-    
-    ''' Reads face vectors from the records, 
-        compares them with the input vector using l2 norm 
-        returns the rollnumber against the best match '''
+    ''' 
+    Reads face vectors from the records, compares them with the input vector using l2 norm returns the rollnumber against the best match
+    :param face_vector: {np.ndarray} The face vector which is to be matched.
+    :param recognition_thresh: {float} The min threshold for l2 distance
+    :return: {str} The matchde roll number or None
+    '''
     
     records_dir = 'records'
     min_dist = np.Infinity

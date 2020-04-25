@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>utils module &mdash; Attendance System Using Face Recognition 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="prev" title="socket_server module" href="socket_server.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Attendance System Using Face Recognition
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="client.html">client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_face_vector.html">get_face_vector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recognize_face.html">recognize_face module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socket_server.html">socket_server module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">utils module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Attendance System Using Face Recognition</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>utils module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/utils.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-utils">
+<span id="utils-module"></span><h1>utils module<a class="headerlink" href="#module-utils" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="utils.add_facevec_to_records">
+<code class="descclassname">utils.</code><code class="descname">add_facevec_to_records</code><span class="sig-paren">(</span><em>face_vector</em>, <em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#add_facevec_to_records"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.add_facevec_to_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds face vector to records
+:param face_vector: {np.ndarray} Roll number to be added
+:param fname: {str} file name with which the vector is saved
+:return: {none} when the function completes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.add_student_to_attendance_sheet">
+<code class="descclassname">utils.</code><code class="descname">add_student_to_attendance_sheet</code><span class="sig-paren">(</span><em>roll_number</em>, <em>path='./attendance_sheet.csv'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#add_student_to_attendance_sheet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.add_student_to_attendance_sheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds students rol number to the attendance sheet
+:param roll_number: {int} Roll number to be added to the sheet
+:param path: {str} path to the attendance sheet
+:return: {none} when the function completes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.enroll_student">
+<code class="descclassname">utils.</code><code class="descname">enroll_student</code><span class="sig-paren">(</span><em>roll_number</em>, <em>face_vector</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#enroll_student"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.enroll_student" title="Permalink to this definition">¶</a></dt>
+<dd><p>enrolls a student
+:param roll_number: {str} Roll number to be enrolled
+:param face_vector: {np.ndarray} Face vector of the person to be enrolled
+:return: {none} when the function completes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.mark_present">
+<code class="descclassname">utils.</code><code class="descname">mark_present</code><span class="sig-paren">(</span><em>roll_number</em>, <em>path='./attendance_sheet.csv'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#mark_present"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.mark_present" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the attendance sheet for the day
+:param roll_number: {int} Roll number to be marked present
+:param path: {str} path to the attendance sheet
+:return: {none} when the function completes</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="socket_server.html" class="btn btn-neutral float-left" title="socket_server module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Pranay Gupta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
