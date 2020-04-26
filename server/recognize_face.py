@@ -10,7 +10,7 @@ def recognize_face(face_vector, recognition_thresh):
     :return: {str} The matchde roll number or None
     '''
     
-    records_dir = 'records'
+    records_dir = '/home/pranay/college/8/swe/Attendance-System-Using-Image-Recognition/server/records'
     min_dist = np.Infinity
     roll_number = None
     for vec_file in os.listdir(os.path.join(records_dir, 'vectors')):

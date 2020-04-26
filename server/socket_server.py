@@ -21,6 +21,7 @@ class Server:
         self.ip = ip
         self.port = port
         self.sock = socket.socket()
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind((ip, port))
         self.sock.listen(1)
 
@@ -142,4 +143,6 @@ if __name__ == '__main__':
             csock, caddr = server.accept_connection()
             _thread.start_new_thread(start_procedure,(server, csock, caddr))
         except:
+            server.sock.shutdown(socket.SHUT_RDWR)
+            server.sock.close()
             sys.exit(0)
