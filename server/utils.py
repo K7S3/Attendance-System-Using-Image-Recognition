@@ -19,6 +19,7 @@ def mark_present(roll_number, path = './attendance_sheet.csv'):
         if roll == int(roll_number):
             df.at[num, today] = 'P'
     df.to_csv(path, index=False)
+    return "Done"
 
 def add_facevec_to_records(face_vector, fname):
     '''
@@ -28,8 +29,9 @@ def add_facevec_to_records(face_vector, fname):
     :return: {none} when the function completes
     '''
 
-    path = os.path.join('./records/vectors/', fname)
+    path = os.path.join('/home/pranay/college/8/swe/Attendance-System-Using-Image-Recognition/server/records/vectors/', fname)
     np.save(path, face_vector)
+    return "Done"
 
 def add_student_to_attendance_sheet(roll_number, path = './attendance_sheet.csv'):
     '''
@@ -51,6 +53,7 @@ def add_student_to_attendance_sheet(roll_number, path = './attendance_sheet.csv'
     cols = df.columns.tolist()
     df2 = df2[cols]
     df2.to_csv(path, index=False)
+    return "Done"
 
 def enroll_student(roll_number, face_vector):
     '''
@@ -63,3 +66,4 @@ def enroll_student(roll_number, face_vector):
     add_facevec_to_records(face_vector, roll_number+".npy")
     add_student_to_attendance_sheet(roll_number)
     mark_present(roll_number)
+    return "Done"
