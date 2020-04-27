@@ -1,0 +1,5 @@
+numpy==1.17.1
+facenet-pytorch
+torch==1.1.0
+opencv-python
+pandas
