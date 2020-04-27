@@ -33,10 +33,23 @@ High-level modules should not depend on low-level modules.
 Abstractions should not depend on details. Details should depend on abstractions.
 
 
+* Clean Code Principles : 
+1. name the variables according to the project domain.
+2. Camel Case for variables and data structures name.
+3. Screaming Snake Case for Constants name.
+4. For methods: Screaming Snake Case for  naming them( usually people apply camel case but for more readability we have used this).
+5. Function should only accept 1 or 2 arguments or at max three not more than that.
+6. Followed Indentation, comments(only must needed comments)
+
+
+
+
 * Properties of the final Project :- 
 1. The project possesses modularity. It is divided into multiple classes and methods.
 2. It is flexible towards expansion
 3. The project is scalable
-
-
+4. All aspects of clean code are applied.
+                
 * Applied Distribution System : - Ap System
+Availability: A guarantee that every request receives a (non-error) response, without the guarantee that it contains the most recent write.
+Using CAP theorem in this project we have opted for availability over consistency.
