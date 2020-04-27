@@ -34,6 +34,16 @@ Team 19
 - Matching is done using the L2 distance between face vectors, and some threshold value. 
 - In case the face vector can not be matched with any of the vectors present in the database, the person now has to be enrolled for detection in future. The server replies accordingly with a present or a prompt for details required for enrollment.
 
+### Ongoing Work
+
+- Development of a full-fledged attendance portal using a lightweight flask-socketio app. The image detection is implemented through faceapi.js using the TinyFaceDetectorModel : the size of which is only 190kB and works with minimum latency even on mobile phones.
+- If everything goes well, we would propose this app to the college administration.
+
+![img][images/portal_user.png]
+
+![img][images/face_detection.png]
+
+
 ## FAQs
 ##### 1. Is the Project Scalable and Maintainable?
 The main goal of the project is to make it scalable so that we can use the same code for a higher use case such as security surveillance.
