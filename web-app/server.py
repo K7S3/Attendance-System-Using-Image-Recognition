@@ -87,8 +87,8 @@ def createLecture(lecture_list):
 @socketio.on('join lecture')
 def handleFeatureVector(query):    
     start_procedure(query['face_vec'])
-    # join_room(lecture.id)
-    # send(user.name + ' has entered the room.', room=lecture.id)
+    # join_room(query['courses'])
+    # send(user.name + ' has entered the room.', room=query['courses'])
     
 
 @socketio.on('leave lecture')
