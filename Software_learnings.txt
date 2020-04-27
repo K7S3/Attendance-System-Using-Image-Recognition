@@ -1,0 +1,28 @@
+﻿Software Engineering  Learnings:
+* Programming Language : Python
+
+
+1. Object oriented( allows, abstraction, Inheritance, Encapsulation).
+2. Having various modules to implement High level functionalities. 
+3. easy to code.
+4. easy to understand.
+
+
+* Methodology Used :- Agile
+Agile methodology helps improve quality of the product by breaking down the project into manageable units and the project team can focus on high-quality development, testing, and collaboration. This methodology helped us to improve the quality of the product by finding and fixing defects quickly and identifying expectation mismatches early
+* SOLID Principles:
+S — Single responsibility principle : 
+In programming, this states that every module or class should have responsibility over a single part of the functionality provided by the software.
+Example from the Project :- Get_face_vector, which is the module only devoted to one task which is getting face vector for the server to recognize the faces, there is no other work being done.
+O  —  Open/closed principle :
+        
+        
+
+
+* Properties of the final Project :- 
+1. The project possesses modularity. It is divided into multiple classes and methods.
+2. It is flexible towards expansion
+3. The project is scalable
+
+
+* Applied Distribution System : - Ap System
