@@ -1,4 +1,6 @@
 ﻿Software Engineering  Learnings:
+
+
 * Programming Language : Python
 
 
@@ -15,8 +17,20 @@ S — Single responsibility principle :
 In programming, this states that every module or class should have responsibility over a single part of the functionality provided by the software.
 Example from the Project :- Get_face_vector, which is the module only devoted to one task which is getting face vector for the server to recognize the faces, there is no other work being done.
 O  —  Open/closed principle :
-        
-        
+        In programming, this states that software entities should be open   for   extensions, but closed for modifications.
+            Example from the projects :- Everything is in modules, So every module is open for extension all be needed to make the new utilities and add them into our modules. We don’t need to do anything from scratch.
+I — Interface segregation principle
+In programming, this states that no client should be forced to depend on methods it does not use. Simply, Do not add additional functionality to an existing interface by adding new methods. Instead, create a new interface and let your class implement multiple interfaces if needed.
+Example from Project :  All  methods in the project, are being used as its fullest and we   
+have classes in all the modules so we can implement any new interface if required.
+
+
+D - Dependency inversion principle
+            In programming,this is a way to decouple software  modules.
+            This principle states that :
+High-level modules should not depend on low-level modules. 
+            Both should depend on   Abstractions.
+Abstractions should not depend on details. Details should depend on abstractions.
 
 
 * Properties of the final Project :- 
